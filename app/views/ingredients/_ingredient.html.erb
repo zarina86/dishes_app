@@ -1,0 +1,19 @@
+<div id="<%= dom_id ingredient %>">
+  <%= form_with(model: ingredient, class: "container py-2") do |form| %>
+    <% if ingredient.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this cat from being saved:</h2>
+
+      <ul>
+        <% ingredient.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <%= form.check_box :name, class: "form-check-input" %>
+    <%= ingredient.name %>
+  <% end %>
+</div>
+

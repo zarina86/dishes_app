@@ -1,0 +1,20 @@
+<div class="container py-3">
+  <p style="color: green"><%= notice %></p>
+
+  <h1 class="text-center"> All Dishes</h1>
+
+  <div id="dishes">
+    <div class="row justify-content-center">
+      <div class="col-sm-8">
+    <% @dishes.each do |dish| %>
+      <%= render dish %>
+      <div class="mb-3 mt-3">
+      <%= link_to "Show", dish, class: "btn btn-primary" %>
+      </div>
+      </div>
+    <% end %>   
+    <%= link_to "New", new_dish_path %>
+  </div>
+  </div>
+  </div>
+</div>

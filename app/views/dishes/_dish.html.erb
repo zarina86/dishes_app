@@ -1,0 +1,33 @@
+<div id="<%= dom_id dish %>">
+<div class="card mt-3 mb-3" style="width: 18rem;">
+    <div class="card-header text-center">Dish</div>
+      <div class="card-body text-center">
+        <p>
+          <strong>Name:</strong>
+          <%= dish.name %> 
+        </p>
+        <p>
+          <strong>Ingredients:</strong>
+          <% ingredients = dish.ingredients.to_a %>
+          <% ingredients.each do |ingredient|%>
+            <%= ingredient.name %>
+          <% end %> 
+        </p>
+
+        <div class="btn-group" role="group">
+
+          <button type="button" class="btn btn-success dropdown-toggle" 
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Actions
+          </button>
+
+          <ul class="dropdown-menu">
+            <li><%= link_to "Edit", edit_dish_path(dish), class: "dropdown-item" %></li> 
+
+            <li><%= button_to "Destroy", @dish, 
+              form: { data: { turbo_method: :delete}}, class: "dropdown-item" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

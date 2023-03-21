@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="ingredients">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <h1 class="text-center">Ingredients</h1>
+      <% @ingredients.each do |ingredient| %>
+        <div class="col col-sm-4">
+          <%= render ingredient %>
+        </div>
+      <% end %>
+    </div>
+    <div class="mb-6">
+      <%= button_to "Заказать", root_path %>
+      <%= link_to "New ingredient", new_ingredient_path %>
+    </div>
+  </div>    
+</div>
+

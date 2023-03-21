@@ -1,0 +1,35 @@
+<%= form_with(model: dish, data: { turbo: false }) do |form| %>
+  <% if dish.errors.any? %>
+    <div style="color: red">
+      <h6><%= pluralize(dish.errors.count, "error") %> prohibited this dish from being saved:</h6>
+
+      <ul>
+        <% dish.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3 mt-3">
+    <%= form.label :name %>
+    <div class="col-sm-6 col-md-6">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="row mb-3 mt-3">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div class="form-check-inline">
+        <%= form.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |ing| %>
+          <% ing.label(class: "form-check-label p-2") {ing.check_box(class: "form-check-input") + ing.text} %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <%= form.submit "Submit", class: "btn btn-success" %>
+    <%= link_to "Back", dishes_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

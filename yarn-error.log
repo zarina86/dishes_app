@@ -1,0 +1,33 @@
+Arguments: 
+  /home/zarina86/.nvm/versions/node/v19.3.0/bin/node /home/zarina86/.cache/node/corepack/yarn/1.22.19/bin/yarn.js add sass bootstrap bootstrap-icons @popperjs/core
+
+PATH: 
+  /home/zarina86/.rbenv/versions/3.1.3/lib/ruby/gems/3.1.0/bin:/home/zarina86/.rbenv/versions/3.1.3/bin:/home/zarina86/.rbenv/libexec:/home/zarina86/.rbenv/plugins/ruby-build/bin:/home/zarina86/.nvm/versions/node/v19.3.0/bin:/home/zarina86/.yarn/bin:/home/zarina86/.config/yarn/global/node_modules/.bin:/home/zarina86/.rbenv/shims:/home/zarina86/.rbenv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.3.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+
+npm manifest: 
+  {
+    "name": "app",
+    "private": "true",
+    "scripts": {
+      "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
