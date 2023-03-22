@@ -1,4 +1,4 @@
 class DishIngredient < ApplicationRecord
-  belongs_to :dish, dependent: :destroy
-  belongs_to :ingredient, dependent: :destroy
+  belongs_to :dish, optional: true
+  belongs_to :ingredient, optional: true
 end
