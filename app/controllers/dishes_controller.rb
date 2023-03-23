@@ -3,7 +3,7 @@ class DishesController < ApplicationController
 
   def index
     @search = Dish.ransack(params[:q])
-    @dishes = @search.result(distinct: true).includes(:dish_ingredients, :ingredients)
+    @dishes = @search.result(distinct: true)#.includes(:dish_ingredients, :ingredients)
   end
 
   def show

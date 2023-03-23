@@ -1,48 +1,38 @@
-<div class="container py-3">
+<div class="container py-2">
   <p style="color: green"><%= notice %></p>
 
   <h1 class="text-center"> All Dishes</h1>
-
   <div id="dishes">
     <div class="row justify-content-center">
-      <div class="col-sm-8">
+      <%= render "search_form" %>
 
-      <%= search_form_for @search do |f| %>
-        <% Ingredient.all.each do |ingredient|%>
-          <%= check_box_tag('q[ingredients_id_eq_any][]', ingredient.id) %>
-          <%= ingredient.name %>
+      <table class="table table-hover table-bordered"> 
+      <thead>
+        <tr>
+          <th><%= sort_link @search, :id, "ID" %></th>
+          <th><%= sort_link @search, :name, "Dish Name" %></th>
+          <th><%= "Ingredients" %></th>
+          <th colspan="3"><%= "Actions" %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @dishes.each do |dish| %>
+          <tr>
+            <td><%= dish.id %></td>
+            <td><%= dish.name %></td>
+            <td><%= dish.ingredients.map(&:name).sort.join(", ") %></td>
+            <td><%= link_to 'Show', dish %></td>
+            <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+            <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
         <% end %>
-          
-      </div>
-          <div class="actions"><%= f.submit "Search" %></div>
-        
-      <% end %>
-
-      <table>
-  <thead>
-    <tr>
-      <th>Dish Name</th>
-      <th>Ingredients</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @dishes.each do |dish| %>
-      <tr>
-        <td><%= dish.name %></td>
-        <td><%= dish.ingredients.map(&:name).sort.join(", ") %></td>
-        <td><%= link_to 'Show', dish %></td>
-        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
-        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-    <%= link_to "New", new_dish_path %>
-    <%= link_to "Ingredients", root_path, class: "btn btn-primary" %>
-    </div>
+      </tbody>
+      </table>
+    
+    <div>
+      <%= link_to "New", new_dish_path %> |
+      <%= link_to "Ingredients", ingredients_path %> |
     </div>
   </div>
 </div>
