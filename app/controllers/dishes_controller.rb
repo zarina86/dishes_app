@@ -2,7 +2,8 @@ class DishesController < ApplicationController
   before_action :set_dish, only: %i[ show edit update destroy]
 
   def index
-    @dishes = Dish.all
+    @search = Dish.ransack(params[:q])
+    @dishes = @search.result(distinct: true).includes(:dish_ingredients, :ingredients)
   end
 
   def show

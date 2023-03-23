@@ -5,6 +5,10 @@ class Ingredient < ApplicationRecord
   before_validation :downcase_name
 
   validates :name, presence: true, uniqueness: true
+  
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id name]
+  end
 
   private
   

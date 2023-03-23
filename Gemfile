@@ -21,6 +21,8 @@ gem "cssbundling-rails"
 
 gem "jbuilder"
 
+gem "ransack"
+
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem "bootsnap", require: false
